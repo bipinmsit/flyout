@@ -1,0 +1,24 @@
+.mainDiv {
+  background-color: #b8cce4;
+  height: 100%;
+  width: 20%;
+  position: fixed;
+  top: 0%;
+  right: 0;
+  margin-right: 30px;
+  transform: translateX(200%);
+  transition: transform 0.3s ease-in-out;
+}
+.animation {
+  transform: translateX(0);
+  z-index: 1;
+}
+
+fieldset {
+  border: 1px solid white;
+}
+
+legend {
+  margin-left: calc(-25%);
+  font-size: 13px;
+}

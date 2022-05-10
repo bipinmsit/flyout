@@ -1,0 +1,28 @@
+.FlyoutDiv {
+  /* transform: rotate(90deg); */
+  display: flex;
+  justify-content: center;
+  transform: rotate(90deg) translate(100%, 0);
+  transform-origin: right top;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  z-index: 1;
+}
+
+.FlyoutButton {
+  height: 3%;
+  width: auto;
+  /* transform: rotate(90deg); */
+  white-space: nowrap;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 10px;
+  color: #0f243e;
+  visibility: visible;
+  margin: 0.5%;
+  float: right;
+}
+
+.FlyoutButton:hover {
+  cursor: pointer;
+}
