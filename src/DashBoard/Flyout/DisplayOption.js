@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import classes from "./Flyout.module.css";
-
 import { Button, CheckBox, ComboBox, Input, Label } from "arms_v2.8_webui";
 import { Container, Row, Col } from "react-bootstrap";
+import { MapboxContext } from "./../../Map/Mapbox";
 
 function DisplayOption(props) {
+  const [check, setCheck] = useState(false);
+  const [fir, setFIR] = useState("");
+  const [projectionInfo, setProjectionInfo] = useState("");
+
+  const { map } = useContext(MapboxContext);
+
   let flyoutClass = [`${classes.mainDiv}`];
   if (props.show) {
     flyoutClass = [`${classes.mainDiv} ${classes.animation}`];
@@ -18,9 +24,44 @@ function DisplayOption(props) {
     { value: "E", listname: "E", displayValue: "E" },
   ];
 
-  const [check, setCheck] = useState(false);
-  const [fir, setFIR] = useState("");
-  console.log(fir);
+  const projectionList = [
+    { value: "none", listname: "Select Projection", displayValue: "none" },
+    {
+      value: "albers",
+      listname: "Albers",
+      displayValue: "Albers",
+    },
+    {
+      value: "equalEarth",
+      listname: "Equal Earth",
+      displayValue: "equalEarth",
+    },
+    {
+      value: "equirectangular",
+      listname: "Equirectangular",
+      displayValue: "equirectangular",
+    },
+    {
+      value: "lambertConformalConic",
+      listname: "Lambert Conformal Conic",
+      displayValue: "lambertConformalConic",
+    },
+    {
+      value: "mercator",
+      listname: "Mercator",
+      displayValue: "mercator",
+    },
+    {
+      value: "naturalEarth",
+      listname: "Natural Earth",
+      displayValue: "naturalEarth",
+    },
+    {
+      value: "winkelTripel",
+      listname: "Winkel Tripel",
+      displayValue: "winkelTripel",
+    },
+  ];
 
   return (
     <nav className={flyoutClass.join(" ")}>
@@ -41,12 +82,12 @@ function DisplayOption(props) {
           <Container style={{ float: "left" }}>
             <Row style={{ display: "flex", margin: "1%" }}>
               <Col md={12}>
-                <CheckBox label={"All Routes"} />
+                <CheckBox iconType="tick" label={"All Routes"} />
               </Col>
             </Row>
             <Row style={{ display: "flex", margin: "1%" }}>
               <Col>
-                <CheckBox label={"Airfields"} />
+                <CheckBox iconType="tick" label={"Airfields"} />
               </Col>
               <Col>
                 <Button text={"Circles"} />
@@ -54,7 +95,7 @@ function DisplayOption(props) {
             </Row>
             <Row style={{ display: "flex", margin: "1%" }}>
               <Col>
-                <CheckBox label={"FIR"} />
+                <CheckBox iconType="tick" label={"FIR"} />
               </Col>
               <Col>
                 <ComboBox
@@ -104,27 +145,27 @@ function DisplayOption(props) {
               style={{ display: "flex", margin: "1%", marginBottom: "20px" }}
             >
               <Col>
-                <CheckBox label={"Restricted Area"} />
+                <CheckBox iconType="tick" label={"Restricted Area"} />
               </Col>
             </Row>
             <Row style={{ display: "flex", margin: "1%" }}>
               <Col>
-                <CheckBox label={"MORA"} />
+                <CheckBox iconType="tick" label={"MORA"} />
               </Col>
             </Row>
             <Row style={{ display: "flex", margin: "1%" }}>
               <Col>
-                <CheckBox label={"Terrian"} />
+                <CheckBox iconType="tick" label={"Terrian"} />
               </Col>
             </Row>
             <Row style={{ display: "flex", margin: "1%" }}>
               <Col>
-                <CheckBox label={"Detail Terrian"} />
+                <CheckBox iconType="tick" label={"Detail Terrian"} />
               </Col>
             </Row>
             <Row style={{ display: "flex", margin: "1%" }}>
               <Col>
-                <CheckBox label={"Swath"} />
+                <CheckBox iconType="tick" label={"Swath"} />
               </Col>
               <Col>
                 <Input />
@@ -143,10 +184,10 @@ function DisplayOption(props) {
                 <Label text={"NAT"} style={{ textAlign: "left" }} />
               </Col>
               <Col>
-                <CheckBox label={"E"} />
+                <CheckBox iconType="tick" label={"E"} />
               </Col>
               <Col>
-                <CheckBox label={"W"} />
+                <CheckBox iconType="tick" label={"W"} />
               </Col>
             </Row>
             <Row style={{ display: "flex", margin: "1%" }}>
@@ -154,10 +195,10 @@ function DisplayOption(props) {
                 <Label text={"PACOTS"} style={{ textAlign: "left" }} />
               </Col>
               <Col>
-                <CheckBox label={"E"} />
+                <CheckBox iconType="tick" label={"E"} />
               </Col>
               <Col>
-                <CheckBox label={"W"} />
+                <CheckBox iconType="tick" label={"W"} />
               </Col>
             </Row>
             <Row style={{ display: "flex", margin: "1%" }}>
@@ -167,10 +208,20 @@ function DisplayOption(props) {
             </Row>
             <Row style={{ display: "flex", margin: "1%" }}>
               <Col>
-                <ComboBox options={sampleData} style={{ width: "150px" }} />
+                <ComboBox
+                  options={projectionList}
+                  style={{ width: "150px" }}
+                  onChange={(e) => setProjectionInfo(e.target.value)}
+                />
               </Col>
               <Col style={{ marginLeft: "5px" }}>
-                <Button text={"Load"} />
+                <Button
+                  text={"Load"}
+                  onClick={() => {
+                    const mapObj = map.current;
+                    mapObj.setProjection(projectionInfo);
+                  }}
+                />
               </Col>
             </Row>
             <Row>

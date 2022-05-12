@@ -26,35 +26,35 @@ function WeatherInformation(props) {
         <Container style={{ float: "left" }}>
           <Row style={{ display: "flex", margin: "1%" }}>
             <Col>
-              <CheckBox label={"CAT"} />
+              <CheckBox iconType="tick" label={"CAT"} />
             </Col>
             <Col>
-              <CheckBox label={"ICING"} />
+              <CheckBox iconType="tick" label={"ICING"} />
             </Col>
             <Col>
-              <CheckBox label={"CB"} />
+              <CheckBox iconType="tick" label={"CB"} />
             </Col>
             <Col>
-              <CheckBox label={"HIWC"} />
-            </Col>
-          </Row>
-          <Row style={{ display: "flex", margin: "1%" }}>
-            <Col>
-              <CheckBox label={"TCAC"} />
-            </Col>
-            <Col>
-              <CheckBox label={"VAAC"} />
+              <CheckBox iconType="tick" label={"HIWC"} />
             </Col>
           </Row>
           <Row style={{ display: "flex", margin: "1%" }}>
             <Col>
-              <CheckBox label={"SIGMAT"} />
+              <CheckBox iconType="tick" label={"TCAC"} />
+            </Col>
+            <Col>
+              <CheckBox iconType="tick" label={"VAAC"} />
+            </Col>
+          </Row>
+          <Row style={{ display: "flex", margin: "1%" }}>
+            <Col>
+              <CheckBox iconType="tick" label={"SIGMAT"} />
             </Col>
           </Row>
         </Container>
-        <fieldset>
+        <fieldset style={{ float: "left", width: "95%" }}>
           <legend>
-            <CheckBox label={"Charts"} />
+            <CheckBox iconType="tick" label={"Charts"} />
           </legend>
           <Container>
             <Row style={{ display: "flex", margin: "1%" }}>

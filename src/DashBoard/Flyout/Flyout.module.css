@@ -22,3 +22,43 @@ legend {
   margin-left: calc(-25%);
   font-size: 13px;
 }
+
+	
+.blackLine {
+  width: 15px;
+  border-bottom: 2px solid black;
+  height: 50%;
+  margin-left: 40%;
+}
+.darkRedLine {
+  width: 15px;
+  border-bottom: 2px solid darkred;
+  height: 50%;
+  margin-left: 40%;
+}
+.yellowLine {
+  width: 50px;
+  border-bottom: 2px solid yellow;
+  height: 50%;
+  margin-left: 25%;
+}
+.brownLine {
+  width: 50px;
+  border-bottom: 2px solid brown;
+  height: 50%;
+  margin-left: 25%;
+}
+.redLine {
+  width: 50px;
+  border-bottom: 2px solid red;
+  height: 50%;
+  margin-left: 25%;
+}
+.circle {
+  height: 15px;
+  width: 15px;
+  background-color: transparent;
+  border-radius: 50%;
+  margin-left: 40%;
+  border: 3px solid black;
+}
